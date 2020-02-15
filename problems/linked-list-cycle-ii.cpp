@@ -9,19 +9,20 @@ struct ListNode {
 
 class Solution {
   public:
-    bool hasCycle(ListNode *head) {
+    ListNode *detectCycle(ListNode *head) {
         if(head == nullptr) {
-            return false;
+            return NULL;
         }
         map<ListNode *, bool> m;
 
         while(head != nullptr) {
             if(m[head]) {
-                return true;
+                return head;
             }
             m[head] = true;
             head = head->next;
         }
-        return false;
+
+        return head;
     }
 };
