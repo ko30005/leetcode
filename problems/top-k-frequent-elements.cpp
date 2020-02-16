@@ -15,7 +15,7 @@ class Solution {
         for(auto it = map.begin(); it != map.end(); it++) {
             pq.push(make_pair(it->second, it->first));
 
-            if(res.size() == k) {
+            if(pq.size() > (int)map.size() - k) {
                 res.push_back(pq.top().second);
                 pq.pop();
             }
