@@ -4,9 +4,9 @@ using namespace std;
 class Solution {
   public:
     int rob(vector<int> &nums) {
-        int n = nums.size(), pre = 0, cur = 0;
-        for(int i = 0; i < n; i++) {
-            int tmp = max(pre + nums[i], cur);
+        int pre = 0, cur = 0;
+        for(int i = 0; i < nums.size(); i++) {
+            int tmp = max(cur, pre + nums[i]);
             pre = cur;
             cur = tmp;
         }
