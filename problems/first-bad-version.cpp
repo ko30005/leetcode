@@ -6,21 +6,15 @@ bool isBadVersion(int version);
 class Solution {
   public:
     int firstBadVersion(int n) {
-        int mid, left = 0, right = n;
-
-        while(left < right) {
-            mid = left + (right - left) / 2;
+        int mid = 0, start = 0, high = n;
+        while(start < high) {
+            mid = start + (high - start) / 2;
             if(isBadVersion(mid)) {
-                right = mid;
+                high = mid;
             } else {
-                left = mid + 1;
+                start = mid + 1;
             }
         }
-
-        if(isBadVersion(left)) {
-            return left;
-        }
-
-        return right;
+        return mid;
     }
 };
