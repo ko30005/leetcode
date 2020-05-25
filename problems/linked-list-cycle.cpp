@@ -10,18 +10,19 @@ struct ListNode {
 class Solution {
   public:
     bool hasCycle(ListNode *head) {
-        if(head == nullptr) {
+        if(head == NULL || head->next == NULL) {
             return false;
         }
-        map<ListNode *, bool> m;
 
-        while(head != nullptr) {
-            if(m[head]) {
+        ListNode *tmp1 = head, *tmp2 = head;
+        while(tmp2->next != NULL && tmp2->next->next != NULL) {
+            tmp1 = tmp1->next;
+            tmp2 = tmp2->next->next;
+            if(tmp1 == tmp2) {
                 return true;
             }
-            m[head] = true;
-            head = head->next;
         }
+
         return false;
     }
 };
